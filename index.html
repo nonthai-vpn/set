@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="url"] {
+            width: 300px;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Link Downloader</h1>
+
+    <!-- ฟอร์มสำหรับใส่ลิงก์ -->
+    <form action="/download-link" method="POST">
+        <label for="url">ใส่ลิงก์ไฟล์:</label><br>
+        <input type="url" id="url" name="url" required placeholder="https://example.com/file.zip"><br><br>
+        <button type="submit">ดาวน์โหลด</button>
+    </form>
+
+    <!-- รายการไฟล์ -->
+    <h2>ดาวน์โหลดไฟล์</h2>
+    <ul>
+        {% for file in files %}
+        <li>
+            <a href="/file/{{ file }}">{{ file }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
